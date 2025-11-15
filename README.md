@@ -1,22 +1,21 @@
 README - ĐỒ ÁN LẬP TRÌNH ỨNG DỤNG WEB
 ====================================
 
-NHÓM: ____________
+NHÓM: 5
 HỌC PHẦN: Lập Trình Ứng Dụng Web
-Giảng viên: __________________
+Giảng viên: Trần Công Thịnh
 
 ----------------------------------------------------------------------
 I. THÔNG TIN THÀNH VIÊN
 ----------------------------------------------------------------------
-- MSSV – Họ Tên – Vai trò (Frontend / Backend / Database / Triển khai)
-- MSSV – Họ Tên – Vai trò
-- MSSV – Họ Tên – Vai trò
+- 2474802010436 – Nguyễn Đình Vinh – Vai trò (Frontend / Backend / Database / Triển khai)
+- 2474802010279 – Nguyễn Minh Nhật – Vai trò (Frontend / Backend / Database / Triển khai)
+- 2474802010420 – Hà Trần Huy Tuấn – Vai trò (Frontend / Backend / Database / Triển khai)
 
 ----------------------------------------------------------------------
 II. MÔ TẢ ĐỀ TÀI
 ----------------------------------------------------------------------
-Tên đề tài: _______________________________________________
-
+Tên đề tài: Quản lý quán cà phê
 Mô tả ngắn:
 Website mô phỏng hệ thống quản lý dữ liệu thực tế sử dụng  HTML5, CSS3, JavaScript, PHP và MySQL. Hỗ trợ chức năng đăng nhập, thêm/xóa/sửa/tìm kiếm dữ liệu và thống kê cơ bản.
 
