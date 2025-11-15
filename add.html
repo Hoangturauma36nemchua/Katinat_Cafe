@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thêm sản phẩm</title>
+</head>
+<body>
+<h2>Thêm sản phẩm mới</h2>
+<form method="post" action="add.php">
+    <label>Tên sản phẩm:</label><br>
+    <input type="text" name="tenSP" required><br><br>
+
+    <label>Giá:</label><br>
+    <input type="number" name="gia" step="0.01" required><br><br>
+
+    <label>Số lượng:</label><br>
+    <input type="number" name="soluong" required><br><br>
+
+    <button type="submit">Thêm</button>
+</form>
+<a href="index.html">Quay lại Dashboard</a>
+</body>
+</html>
