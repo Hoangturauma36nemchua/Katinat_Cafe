@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xác nhận Đăng xuất</title>
+    <style>
+        /* --- CSS Tuyết rơi --- */
+        body { position: relative; overflow: hidden; }
+        .snow { position: absolute; top: -20px; background: white; border-radius: 50%; opacity: 0.8; animation: fall linear infinite; }
+        @keyframes fall { 0% { transform: translateY(0); } 100% { transform: translateY(105vh); } }
+        .snow:nth-child(1) { width: 5px; height: 5px; left: 10%; animation-duration: 10s; animation-delay: -3s; }
+        .snow:nth-child(2) { width: 3px; height: 3px; left: 20%; animation-duration: 12s; animation-delay: -1s; }
+        .snow:nth-child(3) { width: 6px; height: 6px; left: 30%; animation-duration: 8s;  animation-delay: -5s; }
+        .snow:nth-child(4) { width: 4px; height: 4px; left: 40%; animation-duration: 15s; animation-delay: -7s; }
+        .snow:nth-child(5) { width: 3px; height: 3px; left: 50%; animation-duration: 10s; animation-delay: -4s; }
+        .snow:nth-child(6) { width: 5px; height: 5px; left: 60%; animation-duration: 9s;  animation-delay: -2s; }
+        .snow:nth-child(7) { width: 2px; height: 2px; left: 70%; animation-duration: 13s; animation-delay: -6s; }
+        .snow:nth-child(8) { width: 6px; height: 6px; left: 80%; animation-duration: 7s;  animation-delay: -1.5s; }
+        .snow:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-duration: 11s; animation-delay: -8s; }
+        .snow:nth-child(10){ width: 3px; height: 3px; left: 95%; animation-duration: 14s; animation-delay: -4s; }
+
+        /* --- CSS Tuần lộc (Phải -> Trái) --- */
+        .sleigh-animation {
+            position: fixed;
+            bottom: 20px; 
+            font-size: 40px; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            z-index: 10; 
+            pointer-events: none;
+            width: 600px; /* Độ dài đoàn xe */
+            white-space: nowrap; /* Ngăn rớt dòng */
+            animation: sleigh-ride-R-L 20s linear infinite;
+        }
+        @keyframes sleigh-ride-R-L {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-600px); }
+        }
+
+        /* --- Giao diện (Nền đỏ, form trắng) --- */
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #a7001e, #6a0013); /* Nền đỏ Noel */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .logout-container {
+            position: relative;
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+            z-index: 5;
+        }
+        h2 { font-size: 1.5rem; color: #333; margin-bottom: 2rem; font-weight: 600; }
+        .buttons { display: flex; justify-content: space-between; gap: 1rem; }
+        .buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.2s;
+        }
+        .buttons a:hover { transform: translateY(-2px); }
+        .btn-confirm { background-color: #d90429; color: white; } /* Đỏ */
+        .btn-cancel { background-color: #6c757d; color: white; } /* Xám */
+    </style>
+</head>
+<body>
+    <div class="sleigh-animation">✨🎄🎁🦌🦌🦌🛷🎁🎄✨</div>
+
+    <div class="snow-container" aria-hidden="true">
+        <div class="snow"></div> <div class="snow"></div> <div class="snow"></div>
+        <div class="snow"></div> <div class="snow"></div> <div class="snow"></div>
+        <div class="snow"></div> <div class="snow"></div> <div class="snow"></div>
+        <div class="snow"></div>
+    </div>
+
+    <div class="logout-container">
+        <h2>Bạn có chắc muốn đăng xuất?</h2>
+        <div class="buttons">
+            <a href="index.html" class="btn-cancel">Hủy</a>
+            <a href="../php/logout.php" class="btn-confirm">Đồng ý</a>
+        </div>
+    </div>
+</body>
+</html>
