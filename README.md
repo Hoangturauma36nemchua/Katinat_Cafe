@@ -3,7 +3,7 @@ README - ĐỒ ÁN LẬP TRÌNH ỨNG DỤNG WEB
 
 NHÓM: 5
 HỌC PHẦN: Lập Trình Ứng Dụng Web
-Giảng viên: Trần Công Thịnh
+Giảng viên: Trần Công Thanh
 
 ----------------------------------------------------------------------
 I. THÔNG TIN THÀNH VIÊN
