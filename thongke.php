@@ -1,31 +1,34 @@
 <?php
+session_start();
 require_once __DIR__ . "/connect.php";
 
-// Xử lý form khi submit
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['tensanpham'];
-    $price = $_POST['gia'];
-    $size = $_POST['size'];
-    $topping = $_POST['topping'];
-    $quantity = $_POST['soluong'];
-
-    // Chèn vào database
-    $sql = "INSERT INTO addproducts (ProductName, Price, Size, Topping, Quantity)
-            VALUES ('$name', $price, '$size', '$topping', $quantity)";
-
-    if ($conn->query($sql)) {
-        $success_msg = "Thêm sản phẩm thành công!";
-    } else {
-        $error_msg = "Lỗi: " . $conn->error;
-    }
+// Kiểm tra đăng nhập
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
 }
+
+// Lấy danh sách sản phẩm và tính thống kê
+$sql = "
+    SELECT 
+        p.ProductID, 
+        p.ProductName, 
+        p.Quantity AS QuantityLeft,
+        IFNULL(SUM(o.Quantity), 0) AS QuantitySold,
+        p.Price,
+        IFNULL(SUM(o.Quantity * p.Price), 0) AS TotalRevenue
+    FROM addproducts p
+    LEFT JOIN addorders o ON p.ProductID = o.ProductID
+    GROUP BY p.ProductID
+";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thêm sản phẩm mới - Giáng Sinh 🎄</title>
+    <title>Thống kê doanh thu - Giáng Sinh 🎄</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,35 +42,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #fff;
             text-shadow: 2px 2px 4px #000;
         }
-        form {
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto 50px auto;
             background-color: rgba(255,255,255,0.9);
-            padding: 20px;
-            width: 300px;
-            margin: 20px auto;
-            border-radius: 10px;
         }
-        form input, form select { padding: 5px; margin: 5px 0; width: 100%; }
-        form button {
-            padding: 5px 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
+        table, th, td {
+            border: 1px solid #c00;
+            padding: 8px;
+            text-align: center;
         }
-        form button:hover { background-color: #218838; }
-        .back-btn {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
+        th {
+            background-color: #c00;
             color: #fff;
-            background-color: #555;
-            padding: 5px 10px;
+        }
+        a.back-btn {
+            display: block;
+            width: 150px;
+            margin: 10px auto;
+            text-align: center;
+            padding: 8px 10px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
             border-radius: 4px;
         }
-        .back-btn:hover { background-color: #333; }
-        .msg { margin: 10px 0; font-weight: bold; color: green; }
-        .error { color: red; }
+        a.back-btn:hover { background-color: #218838; }
 
         /* 🎄 Icon cây thông và 🎅 Santa */
         .floating-icon {
@@ -119,29 +120,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="floating-icon tree-icon">🎄</div>
 <div class="floating-icon santa-icon">🎅🦌🦌</div>
 
-<h2>Thêm sản phẩm mới - Giáng Sinh 🎄</h2>
+<h2>Thống kê doanh thu - Giáng Sinh 🎄</h2>
 
-<?php if (isset($success_msg)): ?>
-    <div class="msg"><?= $success_msg ?></div>
-<?php endif; ?>
-<?php if (isset($error_msg)): ?>
-    <div class="msg error"><?= $error_msg ?></div>
-<?php endif; ?>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Đã bán</th>
+        <th>Còn tồn</th>
+        <th>Giá</th>
+        <th>Tổng tiền bán được</th>
+    </tr>
 
-<form method="POST" action="">
-    <input type="text" name="tensanpham" placeholder="Tên sản phẩm" required><br>
-    <input type="number" name="gia" placeholder="Giá" required><br>
-    <select name="size" required>
-        <option value="S">S</option>
-        <option value="M" selected>M</option>
-        <option value="L">L</option>
-    </select><br>
-    <input type="text" name="topping" placeholder="Topping (ngăn cách bằng ,)"><br>
-    <input type="number" name="soluong" placeholder="Số lượng" min="0" value="1" required><br>
-    <button type="submit">Thêm sản phẩm</button>
-</form>
+    <?php if($result && $result->num_rows > 0): ?>
+        <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['ProductID'] ?></td>
+                <td><?= $row['ProductName'] ?></td>
+                <td><?= $row['QuantitySold'] ?></td>
+                <td><?= $row['QuantityLeft'] ?></td>
+                <td><?= number_format($row['Price']) ?> đ</td>
+                <td><?= number_format($row['TotalRevenue']) ?> đ</td>
+            </tr>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <tr><td colspan="6">Không có dữ liệu</td></tr>
+    <?php endif; ?>
+</table>
 
-<!-- Nút quay về trang chủ -->
 <a href="index.php" class="back-btn">Quay về trang chủ</a>
 
 <!-- Snowflakes -->
@@ -160,6 +166,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 </html>
 
-<?php
-$conn->close();
-?>
+<?php $conn->close(); ?>
