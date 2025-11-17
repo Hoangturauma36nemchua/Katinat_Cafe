@@ -1,21 +1,21 @@
 README - ĐỒ ÁN LẬP TRÌNH ỨNG DỤNG WEB
 ====================================
 
-NHÓM: ____________
+NHÓM: 5
 HỌC PHẦN: Lập Trình Ứng Dụng Web
-Giảng viên: __________________
+Giảng viên: Trần Công Thanh
 
 ----------------------------------------------------------------------
 I. THÔNG TIN THÀNH VIÊN
 ----------------------------------------------------------------------
-- MSSV – Họ Tên – Vai trò (Frontend / Backend / Database / Triển khai)
-- MSSV – Họ Tên – Vai trò
-- MSSV – Họ Tên – Vai trò
+- 2474802010436 – Nguyễn Đình Vinh – Vai trò (Frontend / Backend / Database / Triển khai)
+- 2474802010279 – Nguyễn Minh Nhật – Vai trò (Frontend / Backend / Database / Triển khai)
+- 2474802010420 – Hà Trần Huy Tuấn – Vai trò (Frontend / Backend / Database / Triển khai)
 
 ----------------------------------------------------------------------
 II. MÔ TẢ ĐỀ TÀI
 ----------------------------------------------------------------------
-Tên đề tài: _______________________________________________
+Tên đề tài: Quản lý quán Katinat Cafe
 
 Mô tả ngắn:
 Website mô phỏng hệ thống quản lý dữ liệu thực tế sử dụng  HTML5, CSS3, JavaScript, PHP và MySQL. Hỗ trợ chức năng đăng nhập, thêm/xóa/sửa/tìm kiếm dữ liệu và thống kê cơ bản.
@@ -39,7 +39,6 @@ IV. TÀI KHOẢN ĐĂNG NHẬP
 ----------------------------------------------------------------------
 Ví dụ (cập nhật theo nhóm):
 - admin / 123456
-- user  / 123456
 
 ----------------------------------------------------------------------
 V. LINK TRIỂN KHAI ONLINE (FREE HOST)
