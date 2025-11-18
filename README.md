@@ -52,7 +52,7 @@ Repo chính (public):
 https://github.com/________________________________
 
 Nhánh từng sinh viên (BẮT BUỘC):
-- SV1: https://github.com/.../tree/<branch_sv1>
+- SV1: https://github.com/.../tree/<nguyendinhvinh>
 - SV2: https://github.com/.../tree/<branch_sv2>
 - SV3: https://github.com/.../tree/<branch_sv3>
 
