@@ -49,8 +49,7 @@ URL: https://_____________________________________
 VI. LINK GITHUB (BẮT BUỘC)
 ----------------------------------------------------------------------
 Repo chính (public): 
-https://github.com/________________________________
-
+https://github.com/Hoangturauma36nemchua/Katinat_Cafe
 Nhánh từng sinh viên (BẮT BUỘC):
 - SV1: https://github.com/.../tree/<nguyendinhvinh>
 - SV2: https://github.com/.../tree/<2474802010279_NguyenMinhNhat>
