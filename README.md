@@ -52,9 +52,9 @@ Repo chính (public):
 https://github.com/________________________________
 
 Nhánh từng sinh viên (BẮT BUỘC):
-- SV1: https://github.com/.../tree/<branch_sv1>
-- SV2: https://github.com/.../tree/<branch_sv2>
-- SV3: https://github.com/.../tree/<branch_sv3>
+- SV1: https://github.com/.../tree/<nguyendinhvinh>
+- SV2: https://github.com/.../tree/<2474802010279_NguyenMinhNhat>
+- SV3: https://github.com/.../tree/<2474802010420_HaTranHuyTuan>
 
 Ghi chú:
 => Mỗi thành viên phải có log commit rõ ràng xuyên suốt 3 tuần.
