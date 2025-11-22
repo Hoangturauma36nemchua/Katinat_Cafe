@@ -8,9 +8,9 @@ Giảng viên: Trần Công Thanh
 ----------------------------------------------------------------------
 I. THÔNG TIN THÀNH VIÊN
 ----------------------------------------------------------------------
-- 2474802010436 – Nguyễn Đình Vinh – Vai trò (Frontend / Backend / Database / Triển khai)
-- 2474802010279 – Nguyễn Minh Nhật – Vai trò (Frontend / Backend / Database / Triển khai)
-- 2474802010420 – Hà Trần Huy Tuấn – Vai trò (Frontend / Backend / Database / Triển khai)
+- 2474802010436 – Nguyễn Đình Vinh – Vai trò (Php / Database / Triển khai)
+- 2474802010279 – Nguyễn Minh Nhật – Vai trò (Php / Database / Triển khai)
+- 2474802010420 – Hà Trần Huy Tuấn – Vai trò (Php / Database / Triển khai)
 
 ----------------------------------------------------------------------
 II. MÔ TẢ ĐỀ TÀI
