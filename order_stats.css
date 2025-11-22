@@ -1,0 +1,110 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff8f0;
+    padding: 20px;
+}
+
+h2, h3 {
+    color: #d35400;
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.alert {
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Form thêm khách mới & quay về */
+.add-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-form input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.add-form button {
+    padding: 8px 15px;
+    background: #d35400;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-form button:hover {
+    background: #e67e22;
+}
+
+/* Bảng stats */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f4b183;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #fdf2e9;
+}
+
+/* Select trạng thái */
+select {
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Button cập nhật trạng thái */
+button.update-btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #d35400;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.update-btn:hover {
+    background-color: #e67e22;
+}
