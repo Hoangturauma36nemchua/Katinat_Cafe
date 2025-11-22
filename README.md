@@ -53,7 +53,7 @@ https://github.com/Hoangturauma36nemchua/Katinat_Cafe
 Nhánh từng sinh viên (BẮT BUỘC):
 - SV1: https://github.com/.../tree/<nguyendinhvinh>
 - SV2: https://github.com/.../tree/<2474802010279_NguyenMinhNhat>
-- SV3: https://github.com/.../tree/<2474802010420_HaTranHuyTuan>
+- SV3: https://github.com/.../tree/<HaTranHuyTuan>
 
 Ghi chú:
 => Mỗi thành viên phải có log commit rõ ràng xuyên suốt 3 tuần.
