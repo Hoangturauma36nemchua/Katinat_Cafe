@@ -1,30 +1,35 @@
 <?php
 session_start();
-require_once "connect.php"; // kết nối database
+require_once "connect.php";
 
 $error = '';
+$success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
-    $confirm = $_POST['confirm'];
+    $confirm  = $_POST['confirm'];
 
-    // Kiểm tra mật khẩu
     if ($password !== $confirm) {
         $error = 'Mật khẩu không trùng khớp!';
     } else {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        // Kiểm tra tên đã tồn tại chưa
+        $stmt = $conn->prepare("SELECT * FROM users WHERE name=? LIMIT 1");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        // Chuẩn bị statement để tránh lỗi SQL Injection
-        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $hash);
-
-        if ($stmt->execute()) {
-            // Nếu thành công, chuyển thẳng sang login
-            header("Location: login.php");
-            exit();
+        if ($result->num_rows > 0) {
+            $error = 'Tên đăng nhập đã tồn tại!';
         } else {
-            $error = 'Tên đăng nhập đã tồn tại hoặc lỗi server!';
+            $stmt = $conn->prepare("INSERT INTO users (name, password) VALUES (?, ?)");
+            $stmt->bind_param("ss", $username, $password);
+
+            if ($stmt->execute()) {
+                $success = 'Đăng ký thành công!';  // ✅ Bỏ "Đăng nhập ngay"
+            } else {
+                $error = 'Lỗi server khi tạo tài khoản!';
+            }
         }
     }
 }
@@ -35,18 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Đăng ký</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
-        h2 { text-align: center; }
-        form { max-width: 300px; margin: auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px #aaa; }
-        input { width: 100%; padding: 8px; margin: 5px 0; }
-        button { width: 100%; padding: 8px; margin-top: 10px; background: #007bff; color: #fff; border: none; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        p { text-align: center; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .error { color: red; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
 
@@ -54,6 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php if($error): ?>
     <p class="error"><?= $error ?></p>
+<?php endif; ?>
+
+<?php if($success): ?>
+    <p class="success"><?= $success ?></p>
 <?php endif; ?>
 
 <form method="POST" action="">

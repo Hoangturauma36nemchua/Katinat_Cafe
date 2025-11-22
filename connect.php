@@ -1,21 +1,22 @@
 <?php
 /*
  * File: php/connect.php
- * Kết nối đến cơ sở dữ liệu QLCF trên XAMPP
+ * Kết nối MySQL bằng XAMPP
  */
+
 $servername = "localhost";
-$username = "root";        
-$password = "";            
-$dbname = "QLCF";          
+$username   = "root";
+$password   = ""; // XAMPP mặc định để trống mật khẩu
+$dbname     = "katinat_coffe_shop"; // CHỈ dùng chữ thường và đúng tên DB
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Nếu lỗi kết nối
 if ($conn->connect_error) {
-    die("Connection failed (Kết nối thất bại): " . $conn->connect_error);
+    die("❌ Kết nối thất bại: " . $conn->connect_error);
 }
 
-if (!$conn->set_charset("utf8mb4")) {
-    printf("Error loading character set utf8mb4: %s\n", $conn->error);
-    exit();
-}
+// Thiết lập tiếng Việt
+$conn->query("SET NAMES utf8mb4");
+
 ?>

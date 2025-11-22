@@ -1,0 +1,117 @@
+/* activity_log.css */
+
+/* Toàn trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff7e6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Thanh top */
+.top-bar {
+    background-color: #ffb84d;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: #e60000;
+}
+
+/* Link quay về */
+.back-home {
+    margin: 15px 0;
+}
+
+.back-home a {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    background-color: #ffd699;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.back-home a:hover {
+    background-color: #ffcc80;
+}
+
+/* Tiêu đề */
+h2 {
+    color: #cc6600;
+    margin-bottom: 15px;
+}
+
+/* Button Check In */
+.checkin-btn {
+    background-color: #4da6ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.checkin-btn:hover {
+    background-color: #0066cc;
+}
+
+/* Bảng nhật ký */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ffa64d;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #ffcc80;
+    font-weight: bold;
+    color: #663300;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff2e6;
+}
+
+/* Thông báo lỗi hoặc thành công */
+.alert {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background-color: #ccffcc;
+    color: #006600;
+}
+
+.alert.error {
+    background-color: #ffcccc;
+    color: #990000;
+}
