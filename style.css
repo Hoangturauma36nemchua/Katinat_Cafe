@@ -1,0 +1,133 @@
+/* Nền dịu mắt đỏ Tết */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffefef, #fff7e6); /* đỏ nhạt + vàng nhạt */
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Top bar - tên + logout sang góc phải */
+.top-bar {
+    width: 100%;
+    background-color: #ffe5e5;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: flex-end; /* đẩy nội dung sang phải */
+    align-items: center;
+    gap: 10px; /* khoảng cách giữa tên và link */
+}
+
+/* Link trong top bar */
+.top-bar a {
+    text-decoration: none;
+    color: #e63946;
+    font-weight: bold;
+}
+
+.top-bar a:hover {
+    color: #d62828;
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    color: #e63946;
+}
+
+/* Nút link hành động */
+.actions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a.action-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #e63946; /* đỏ Tết dịu */
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.action-btn:hover {
+    background-color: #d62828; /* đỏ đậm khi hover */
+    transform: translateY(-2px);
+}
+
+/* Table sản phẩm */
+table.product-table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 0 auto 50px auto;
+    background-color: #fff3f3; /* nền nhẹ nhàng */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table.product-table th,
+table.product-table td {
+    border: 1px solid #e63946; /* viền đỏ nhẹ */
+    padding: 12px;
+}
+
+table.product-table th {
+    background-color: #e63946;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+table.product-table td {
+    text-align: center;
+}
+
+/* Nút sửa trong bảng */
+td a.edit-btn {
+    background-color: #f27474;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+td a.edit-btn:hover {
+    background-color: #d62828;
+}
+
+/* Nút xóa trong bảng */
+td a.delete-btn {
+    background-color: #f27474;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+td a.delete-btn:hover {
+    background-color: #d62828;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    table.product-table, .actions {
+        width: 100%;
+    }
+
+    a.action-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}

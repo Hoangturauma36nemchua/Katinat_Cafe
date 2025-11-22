@@ -5,23 +5,27 @@ require_once "connect.php"; // kết nối database
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
-    // Lấy thông tin user từ DB
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=? LIMIT 1");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    if ($username && $password) {
+        // Kiểm tra username
+        $stmt = $conn->prepare("SELECT * FROM users WHERE name=? LIMIT 1");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
 
-    // Kiểm tra mật khẩu
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['username'] = $user['username'];
-        header("Location: index.php"); // quay về trang chủ
-        exit();
+        if ($user && $password === $user['password']) { // nếu muốn bảo mật hơn, dùng password_hash
+            $_SESSION['username'] = $user['name'];
+            $_SESSION['role'] = $user['role'] ?? 'user';
+            header("Location: index.php");
+            exit();
+        } else {
+            $error = 'Sai tên đăng nhập hoặc mật khẩu!';
+        }
     } else {
-        $error = 'Sai tên đăng nhập hoặc mật khẩu!';
+        $error = 'Vui lòng nhập đầy đủ thông tin!';
     }
 }
 ?>
@@ -31,35 +35,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Đăng nhập</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
-        h2 { text-align: center; }
-        form { max-width: 300px; margin: auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px #aaa; }
-        input { width: 100%; padding: 8px; margin: 5px 0; }
-        button { width: 100%; padding: 8px; margin-top: 10px; background: #28a745; color: #fff; border: none; cursor: pointer; }
-        button:hover { background: #218838; }
-        p { text-align: center; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .error { color: red; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
+<div class="login-container">
+    <h2>Đăng nhập</h2>
 
-<h2>Đăng nhập</h2>
+    <?php if($error): ?>
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
 
-<?php if($error): ?>
-    <p class="error"><?= $error ?></p>
-<?php endif; ?>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Tên đăng nhập" required class="input-large">
+        <input type="password" name="password" placeholder="Mật khẩu" required class="input-large">
+        <button type="submit" class="btn-large">Đăng nhập</button>
+    </form>
 
-<form method="POST" action="">
-    <input type="text" name="username" placeholder="Tên đăng nhập" required>
-    <input type="password" name="password" placeholder="Mật khẩu" required>
-    <button type="submit">Đăng nhập</button>
-</form>
-
-<p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
-<p><a href="index.php">Trang chủ</a></p>
-
+    <p class="register-link">Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
+</div>
 </body>
 </html>
