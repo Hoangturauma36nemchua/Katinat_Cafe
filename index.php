@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }  
 
-// Xử lý xóa nếu có yêu cầu
+// Xử lý xóa nếu như có yêu cầu
 if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']);
     $conn->query("DELETE FROM menu WHERE ProductID = $delete_id");
